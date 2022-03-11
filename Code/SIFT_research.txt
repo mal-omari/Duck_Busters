@@ -1,0 +1,30 @@
+from matplotlib import pyplot as plt
+img1 = cv2.imread('myframe1.jpg',0)
+img2 = cv2.imread('myframe2.jpg',0)
+
+imgy = img1[:200,400:500]
+#plt.imshow(imgy),plt.show()
+
+sift = cv2.SIFT_create();
+
+kp1, des1 = sift.detectAndCompute(imgy,None)
+kp2, des2 = sift.detectAndCompute(img2,None)
+
+
+bf = cv2.BFMatcher()
+matches = bf.knnMatch(des1,des2,k=2)
+
+
+indexes = []
+for m,n in matches:
+    if m.distance < 0.75*n.distance:
+        indexes.append(m.trainIdx)
+
+for ip in range(0,len(indexes)):
+  print(kp2[ip].pt)
+
+
+# cv.drawMatchesKnn expects list of lists as matches.
+img3 = cv2.drawMatchesKnn(imgy,kp1,img2,kp2,good,None)
+plt.figure(figsize = (15,15))
+plt.imshow(img3),plt.show()
