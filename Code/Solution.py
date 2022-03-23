@@ -26,7 +26,7 @@ def GetLocation(move_type, env, current_frame):
         duck = cv2.cvtColor(cv2.imread('Level_1.png'),cv2.COLOR_RGB2GRAY)
         sift = cv2.SIFT_create();
 
-        #frame = cv2.resize(cv2.cvtColor(current_frame, cv2.COLOR_BGR2GRAY), None, fx =0.5, fy = 0.5, interpolation = cv2.INTER_CUBIC)
+        frame = cv2.resize(cv2.cvtColor(current_frame, cv2.COLOR_BGR2GRAY), None, fx =0.5, fy = 0.5, interpolation = cv2.INTER_CUBIC)
         kp1, des1 = sift.detectAndCompute(duck,None)
         kp2, des2 = sift.detectAndCompute(frame,None)
 
