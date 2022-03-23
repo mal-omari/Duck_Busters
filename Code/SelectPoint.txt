@@ -1,0 +1,61 @@
+from matplotlib import pyplot as plt
+img1 = cv2.imread('myframe1.jpg',0)
+img2 = cv2.imread('myframe2.jpg',0)
+
+imgy = img1[:200,400:500]
+#plt.imshow(imgy),plt.show()
+
+sift = cv2.SIFT_create();
+
+kp1, des1 = sift.detectAndCompute(imgy,None)
+kp2, des2 = sift.detectAndCompute(img2,None)
+
+
+bf = cv2.BFMatcher()
+matches = bf.knnMatch(des1,des2,k=2)
+
+
+indexes = []
+for m,n in matches:
+    if m.distance < 0.75*n.distance:
+        indexes.append(m.trainIdx)
+
+for ip in range(0,len(indexes)):
+  keypoints.append(kp2[ip].pt)
+  print(kp2[ip].pt)
+# Find centroid
+x = [p[0] for p in keypoints]
+y = [p[1] for p in keypoints]
+centroid = (sum(x) / len(keypoints), sum(y) / len(keypoints))
+# Compute the Euclidean distance of all points to the centroid
+EuclideanDistance = []
+for i in range(0, len(keypoints)):
+  x1 = centroid[0]
+  y1 = centroid[1]
+  point = keypoints[i]
+  x2 = point[0]
+  y2 = point[1]
+  a = x2 - x1
+  b = y2 - y1
+  distance = math.sqrt((a**2) + (b**2))
+  EuclideanDistance.append(distance)
+EuclideanDistance = np.array(EuclideanDistance)
+mean, std = cv2.meanStdDev(EuclideanDistance)
+mean = mean[0][0]
+std = std[0][0]
+new_keypoints = []
+# Filter original keypoints by distance < mean + 2*std
+for ip in range(0, 22):
+  if EuclideanDistance[ip] < mean + 2.0*std:
+    new_keypoints.append(keypoints[ip])
+# Average
+x3 = [p[0] for p in new_keypoints]
+y3 = [p[1] for p in new_keypoints]
+centroidOfKeypoints = (sum(x3) / len(new_keypoints), sum(y3) / len(new_keypoints))
+print(centroidOfKeypoints)
+
+
+# cv.drawMatchesKnn expects list of lists as matches.
+img3 = cv2.drawMatchesKnn(imgy,kp1,img2,kp2,good,None)
+plt.figure(figsize = (15,15))
+plt.imshow(img3),plt.show()
