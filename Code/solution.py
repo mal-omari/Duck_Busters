@@ -59,8 +59,6 @@ def GetLocation(move_type, current_frame, kp1, des1):
         if(len(positions)==0): #sends a noop if no matches are found
           coordinate = [-1,-1]
         else:
-          
-
           keypoints = []
           keypoints = positions.copy()
           # Find centroid
@@ -82,7 +80,7 @@ def GetLocation(move_type, current_frame, kp1, des1):
           for ip in range(0, len(positions)):
             if EuclideanDistance[ip] <= mean + 2.1*std:
               new_keypoints.append(keypoints[ip])
-          
+          # Average
           if(len(new_keypoints) == 0):
             coordinate = [-1,-1]
           else:
