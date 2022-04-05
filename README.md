@@ -36,3 +36,10 @@ When running through the terminal, some arguments can be passed to setup the gam
 |-s|Seed|Override randowm seed for reproducability|
 
 ## Sources
+[1] OpenCV. "Introduction to SIFT (Scale-Invariant Feature Transform)". docs.opencv.org. https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html (Accessed April 4, 2022).
+[2] OpenCV. "Feature Matching". docs.opencv.org. https://docs.opencv.org/3.4/dc/dc3/tutorial_py_matcher.html(Accessed April 4, 2022).
+[3] sr1rsimon. "How to get key points or pixel coordinates of an image from descriptor produced by SIFT algorithm". stackoverflow.com. https://stackoverflow.com/questions/57859836/how-to-get-key-points-or-pixel-coordinates-of-an-image-from-descriptor-produced. (Accessed April 4, 2022).
+[4] D. G. Lowe, "Distinctive Image Features from Scale-Invariant Keypoints," International Journal of Computer Vision, vol. 60, (2), pp. 91-110, 2004.
+
+
+
