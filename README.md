@@ -23,7 +23,7 @@ All files can be found within this repository
 4. Run duck_hunt_main.py
 
 ## Relevent Functions
-When running through the terminal, some arguments can be passed to setup the game. Please refer to table below for arguments.
+When running through the terminal, some arguments can be passed to setup the game. Please refer to table below for commands.
 |Command|Name|Description|
 |--|--|--|
 |-m|Move Type|Setting the type of coordinate. Absolute, Relative, or Manual (Default = Relative)|
