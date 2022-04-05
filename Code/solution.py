@@ -58,7 +58,7 @@ def GetLocation(move_type, current_frame, kp1, des1):
         
         if(len(positions)==0): #sends a noop if no matches are found
           coordinate = [-1,-1]
-        else:
+        else: #outlier removal method adapted from source: https://www.kdnuggets.com/2017/02/removing-outliers-standard-deviation-python.html
           keypoints = []
           keypoints = positions.copy()
           # Find centroid
