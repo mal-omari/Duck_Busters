@@ -28,7 +28,12 @@ def main(args):
     result = {}
     future = None
     executor = ThreadPoolExecutor(max_workers=1)
-    num_hits = 0
+    num_hits = 0                                                      # Initialize implemented hit counter
+    
+    duck = cv2.cvtColor(cv2.imread('DuckAll.png'),cv2.COLOR_RGB2GRAY) # Read and convert DuckAll reference image
+    sift = cv2.SIFT_create();                                         # Create a SIFT
+    kp1, des1 = sift.detectAndCompute(duck,None)                      # Compute and detect the ducks from reference image
+    
     while True:
         """ 
         Use the `current_frame` from either env.step of env.render
@@ -55,7 +60,7 @@ def main(args):
         else:
             if future is None:
                 result = noop()
-                future = executor.submit(GetLocation, args.move_type, current_frame)
+                future = executor.submit(GetLocation, args.move_type, current_frame, kp1, des1)
             elif future.done():
                 result = future.result()
                 future = None
@@ -74,11 +79,13 @@ def main(args):
             coordinate  = res['coordinate']
             move_type   = res['move_type']
             current_frame, level_done, game_done, info = env.step(coordinate, move_type)
+            
+            #Implemented hit counter per level
             #num_hits = 0
             #print(info)
-            if(info['hits'] == 1):
-            	num_hits += 1
-            	print(num_hits)
+            #if(info['hits'] == 1):
+            #	num_hits += 1
+            #	print(num_hits)
             
             if level_done or game_done:
             	num_hits = 0
