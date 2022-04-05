@@ -44,5 +44,5 @@ When running through the terminal, some arguments can be passed to setup the gam
 
 [4] D. G. Lowe, "Distinctive Image Features from Scale-Invariant Keypoints," International Journal of Computer Vision, vol. 60, (2), pp. 91-110, 2004.
 
-[5] “Removing outliers using standard deviation in Python,” KDnuggets. https://www.kdnuggets.com/2017/02/removing-outliers-standard-deviation-python.html(Accessed April 4, 2022). 
+[5] “Removing outliers using standard deviation in Python,” KDnuggets. https://www.kdnuggets.com/2017/02/removing-outliers-standard-deviation-python.html. (Accessed April 4, 2022). 
 
