@@ -30,9 +30,10 @@ def main(args):
     executor = ThreadPoolExecutor(max_workers=1)
     num_hits = 0                                                      # Initialize implemented hit counter
     
+    #uses sift to extract the keypoints and descriptors from the duck collage query image. Done here to save processing time in the solution.py. kp1, des1 sent to Get Location function
     duck = cv2.cvtColor(cv2.imread('DuckAll.png'),cv2.COLOR_RGB2GRAY) # Read and convert DuckAll reference image
-    sift = cv2.SIFT_create();                                         # Create a SIFT
-    kp1, des1 = sift.detectAndCompute(duck,None)                      # Compute and detect the ducks from reference image
+    sift = cv2.SIFT_create();                                         # Create a SIFT, source: https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html
+    kp1, des1 = sift.detectAndCompute(duck,None)                      # Compute and detect the ducks from reference image, source: https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html
     
     while True:
         """ 
