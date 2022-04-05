@@ -33,7 +33,7 @@ def main(args):
     #uses sift to extract the keypoints and descriptors from the duck collage query image. Done here to save processing time in the solution.py. kp1, des1 sent to Get Location function
     duck = cv2.cvtColor(cv2.imread('DuckAll.png'),cv2.COLOR_RGB2GRAY) # Read and convert DuckAll reference image
     sift = cv2.SIFT_create();                                         # Create a SIFT, source: https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html
-    kp1, des1 = sift.detectAndCompute(duck,None)                      # Compute and detect the ducks from reference image, source: https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html
+    kp_d, des_d = sift.detectAndCompute(duck,None)                      # Compute and detect the ducks from reference image, source: https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html
     
     while True:
         """ 
@@ -61,7 +61,7 @@ def main(args):
         else:
             if future is None:
                 result = noop()
-                future = executor.submit(GetLocation, args.move_type, current_frame, kp1, des1)
+                future = executor.submit(GetLocation, args.move_type, current_frame, kp_d, des_d)
             elif future.done():
                 result = future.result()
                 future = None
