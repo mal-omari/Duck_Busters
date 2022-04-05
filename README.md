@@ -20,7 +20,8 @@ All files can be found within this repository
 1. Install Python 3 (Skip if already done)
 2. Create Virtual enviroment
 3. Install requirements.txt
-4. Run duck_hunt_main.py
+4. Ensure DuckAll.png is in the same folder, or change the path in duck_hun_main.py
+5. Run duck_hunt_main.py
 
 ## Relevent Functions
 When running through the terminal, some arguments can be passed to setup the game. Please refer to table below for commands.
