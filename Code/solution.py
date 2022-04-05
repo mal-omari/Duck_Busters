@@ -6,7 +6,7 @@ import numpy as np
 #current_frame is an image array depicting the current duck hunt environment
 #kp1 are the sift keypoints of the duck collage image (query image)
 #des1 are the sift descriptors of the duck collage image (query image)
-def GetLocation(move_type, current_frame, kp1, des1):
+def GetLocation(move_type, current_frame, kp_d, des_d):
         
     #Use relative coordinates to the current position of the "gun", defined as an integer below
     if move_type == "relative":
@@ -36,10 +36,10 @@ def GetLocation(move_type, current_frame, kp1, des1):
 
         frame = cv2.cvtColor(current_frame, cv2.COLOR_BGR2GRAY) #converts current frame to grayscale
         
-        kp2, des2 = sift.detectAndCompute(frame,None) #uses sift to detect the keypoints and descriptors of the frame image, source: https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html
+        kp_f, des_f = sift.detectAndCompute(frame,None) #uses sift to detect the keypoints and descriptors of the frame image, source: https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html
 
-        bf = cv2.BFMatcher() #uses brute force matching object, source: https://docs.opencv.org/3.4/dc/dc3/tutorial_py_matcher.html
-        matches = bf.knnMatch(des1,des2,k=2) #finds the matches of the two sift descriptors, source: https://docs.opencv.org/3.4/dc/dc3/tutorial_py_matcher.html
+        bf = cv2.BFMatcher.create(); #constructor for brute force matching object, source: https://docs.opencv.org/3.4/dc/dc3/tutorial_py_matcher.html, https://docs.opencv.org/3.4/d3/da1/classcv_1_1BFMatcher.html#ac6418c6f87e0e12a88979ea57980c020
+        matches = bf.knnMatch(des_d,des_f,k=2) #finds the matches of the two sift descriptors, source: https://docs.opencv.org/3.4/dc/dc3/tutorial_py_matcher.html
 
         positions = []  #holds the matching coordinates      
         
