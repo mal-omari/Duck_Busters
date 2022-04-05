@@ -47,8 +47,8 @@ def GetLocation(move_type, current_frame, kp_d, des_d):
         for m,n in matches:
           if m.distance < 0.56*n.distance:
             #gets the coordinates from the train image, current frame, source: https://stackoverflow.com/questions/57859836/how-to-get-key-points-or-pixel-coordinates-of-an-image-from-descriptor-produced
-            pos = np.array(kp2[m.trainIdx].pt) 
-            pos1 = np.array(kp2[m.trainIdx].pt)  
+            pos = np.array(kp_f[m.trainIdx].pt) 
+            pos1 = np.array(kp_f[m.trainIdx].pt)  
             pos1[0] = round(pos[1]) #the coordinates are reversed, so need to transpose them
             pos1[1] = round(pos[0])
             positions.append(pos1)  
