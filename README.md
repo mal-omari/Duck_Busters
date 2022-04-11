@@ -45,6 +45,6 @@ When running through the terminal, some arguments can be passed to setup the gam
 
 [4] D. G. Lowe, "Distinctive Image Features from Scale-Invariant Keypoints," International Journal of Computer Vision, vol. 60, (2), pp. 91-110, 2004.
 
-[5] “Removing outliers using standard deviation in Python,” KDnuggets. https://www.kdnuggets.com/2017/02/removing-outliers-standard-deviation-python.html. (Accessed April 4, 2022). 
+[5] P. Jajodia, “Removing outliers using standard deviation in Python,” KDnuggets. https://www.kdnuggets.com/2017/02/removing-outliers-standard-deviation-python.html. (Accessed April 4, 2022).
 
 [6] OpenCV. "cv::BFMatcher Class Reference". docs.opencv.org. https://docs.opencv.org/3.4/d3/da1/classcv_1_1BFMatcher.html#ac6418c6f87e0e12a88979ea57980c020 (Accessed April 5, 2022).
